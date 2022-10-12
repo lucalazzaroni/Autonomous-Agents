@@ -1,3 +1,5 @@
 ipykernel
 -e ./gym-lib
 pygame
+keyboard
+matplotlib
