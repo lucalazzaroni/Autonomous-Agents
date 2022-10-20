@@ -376,6 +376,29 @@ class FrozenLakeEnv(Env):
                 np.array(pygame.surfarray.pixels3d(self.window_surface)), axes=(1, 0, 2)
             )
 
+    def simulate(self):
+        try:
+            import pygame
+        except ImportError:
+            raise DependencyNotInstalled(
+                "pygame is not installed, run `pip install gym[toy_text]`"
+            )
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        obs, _, terminated, _, _ = self.step(0)
+                    elif event.key == pygame.K_RIGHT:
+                        obs, _, terminated, _, _ = self.step(2)
+                    elif event.key == pygame.K_UP:
+                        obs, _, terminated, _, _ = self.step(3)
+                    elif event.key == pygame.K_DOWN:
+                        obs, _, terminated, _, _ = self.step(1)
+                    else:
+                        terminated = False
+                        continue
+                    if terminated:
+                        return obs
     @staticmethod
     def _center_small_rect(big_rect, small_dims):
         offset_w = (big_rect[2] - small_dims[0]) / 2
