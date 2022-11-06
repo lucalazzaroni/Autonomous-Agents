@@ -2,3 +2,4 @@ ipykernel
 -e ./gym-lib
 pygame
 matplotlib
+numpy
