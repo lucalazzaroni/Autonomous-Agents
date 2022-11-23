@@ -1,6 +1,7 @@
 {
     "python.analysis.typeCheckingMode": "off",
     "python.analysis.extraPaths": [
-        "./gym-lib"
+        "./gym-lib",
+        "/Users/luca/miniforge3/envs/gym_tutorial/lib/python3.8/site-packages"
     ]
 }
